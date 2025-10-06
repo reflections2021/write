@@ -99,7 +99,7 @@ in the Program Room at <b>Four Corners</b></p>
 			return new Date(first.getFullYear(), first.getMonth(), m, 16, 0, 0)
 		}
 		mtd = meeting(0);
-		return today < mtd ? return mtd : meeting(1);
+		return today < mtd ? mtd : meeting(1);
 	}
 
 	console.log(meetingdate());
