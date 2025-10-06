@@ -33,7 +33,7 @@
 <div class="center">
 <p>BRAMPTON LIBRARY<br/>
 WRITERS MEETING<br/>
-No. 251112</p>
+No. <span id="shortdate">251112</span>span></p>
 
 <p><span style="font-family:monospace">Dear</span>
 <br/><i>Connoisseurs of Sentences</i></p>
@@ -41,7 +41,7 @@ No. 251112</p>
 <p><b>OUR NEXT MEETING</b><br/>
 is, as scheduled, on</p>
 
-<p>Wednesday, <b>November 12</b><br/>
+<p>Wednesday, <b><span id="longdate">November 12</span>/span</b><br/>
 at <b>2 p.m.</b><br/>
 in the Program Room at <b>Four Corners</b></p>
 
@@ -88,6 +88,8 @@ in the Program Room at <b>Four Corners</b></p>
 </body>
 <script>
 //<![CDATA[
+	let short = document.querySelector("#shortdate");
+	let long = document.querySelector("#longdate");
 
 	let today = new Date();
 
@@ -102,7 +104,21 @@ in the Program Room at <b>Four Corners</b></p>
 		return today < mtd ? mtd : meeting(1);
 	}
 
-	console.log(meetingdate());
+	let mtd = meetingdate();
+	
+	let year = mtd.toLocaleString("default", { year: "numeric" });
+	let mth - mtd.toLocaleString("default", { month: "numeric" });
+	let month = mtd.toLocaleString("default", { month: "long" });
+	let date = mtd.toLocaleString("default", { day: "numeric" });
+	
+	// Long date
+	long.innerText = `${month} ${date}`;
+
+	// Short date
+	let yr = year.toString().substr(-2);
+	let mt = `0${month.toString()}`.substr(-2);
+	let dt = `0${date.toString()}`.substr(-2);
+	short.innerText = `${yr}${mt}${dt}`;
 	
 /*
 var sheets = document.styleSheets;
