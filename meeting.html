@@ -88,6 +88,22 @@ in the Program Room at <b>Four Corners</b></p>
 </body>
 <script>
 //<![CDATA[
+
+	let today = new Date();
+
+	function meetingdate(){
+		function meeting(mt){
+			let first = new Date(today.getFullYear(), today.getMonth() + mt, 1);
+			let firstday = first.getDay();
+			let m = firstday <= 3 ? 4 - firstday + 7 : 4 - firstday + 14;
+			return new Date(first.getFullYear(), first.getMonth(), m, 16, 0, 0)
+		}
+		mtd = meeting(0);
+		return today < mtd ? return mtd : meeting(1);
+	}
+
+	console.log(meetingdate());
+	
 /*
 var sheets = document.styleSheets;
 
