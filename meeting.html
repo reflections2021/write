@@ -100,8 +100,8 @@ in the Program Room at <b>Four Corners</b></p>
 			let m = firstday <= 3 ? 4 - firstday + 7 : 4 - firstday + 14;
 			return new Date(first.getFullYear(), first.getMonth(), m, 16, 0, 0)
 		}
-		let mtd = meeting(0);
-		return today < mtd ? mtd : meeting(1);
+		let xmtd = meeting(0);
+		return today < xmtd ? xmtd : meeting(1);
 	}
 
 	let mtd = meetingdate();
