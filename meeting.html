@@ -97,14 +97,14 @@ in the Program Room at <b>Four Corners</b></p>
 	let today = new Date();
 
 	function meetingdate(){
-		function meeting(mt){
+		function secondWednesday(mt){
 			let first = new Date(today.getFullYear(), today.getMonth() + mt, 1); 
 			let firstday = first.getDay();
-			let m = firstday <= 3 ? 4 - firstday + 7 : 4 - firstday + 14;
+			let m = 4 - firstday + (7 * Math.ceil((firstday+1)/4));
 			return new Date(first.getFullYear(), first.getMonth(), m, 16, 0, 0)
 		}
-		let xmtd = meeting(0);
-		return today <= xmtd ? xmtd : meeting(1);
+		let xmtd = secondWednesday(0);
+		return today <= xmtd ? xmtd : secondWednesday(1);
 	}
 
 	let mtd = meetingdate();
@@ -113,15 +113,15 @@ in the Program Room at <b>Four Corners</b></p>
 	let mth = mtd.toLocaleString("default", { month: "numeric" });
 	let month = mtd.toLocaleString("default", { month: "long" });
 	let date = mtd.toLocaleString("default", { day: "numeric" });
-	
-	// Long date
-	long.innerText = `${month} ${date}`;
 
 	// Short date
 	let yr = year.toString().substr(-2);
 	let mt = `0${mth.toString()}`.substr(-2);
 	let dt = `0${date.toString()}`.substr(-2);
 	short.innerText = `${yr}${mt}${dt}`;
+	
+	// Long date
+	long.innerText = `${month} ${date}`;
 	
 /*
 var sheets = document.styleSheets;
