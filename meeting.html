@@ -1,13 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<html>
 <head>
   <title>Brampton Library Writers</title>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />    
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <style>
+  @keyframes blinker { to { opacity: 0; } }
+
   a {font-style:italic; color:green; text-decoration:none;}
   hr {width:25%; margin:2em auto;}
-  div.outer {max-width:570px; padding:0.25em; border:solid red 1px; font-family:Garamond,serif; font-size:1.25em; margin:auto;}
+  div.outer {max-width:570px; padding:0.25em; border:solid red 1px; font-family:Garamond,serif; font-size:1em; margin:auto;}
   div.inner {background: linear-gradient(180deg,rgba(62, 187, 237, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%); padding:0.75em}
   div.container {background-color:inherit;}
   div.dot {width:1.5em; height:1.5em; margin:1em auto 1.5em; border-radius:50%; border:solid black 1px;}
@@ -18,6 +20,7 @@
   div#library {border:solid black 1em;}
   div#library img {width:100%; height:100%; display:block; border:solid white 1px;}
   .credit {text-align:right; font-size:60%; font-weight:bold; display:block;}
+  span#longdate {animation: blinker 1.7s cubic-bezier(.5, 0, 1, 1) infinite alternate;}
 </style>
 </head>
 
@@ -28,7 +31,7 @@
 <div class="inner">
 <div class="container">
 <div class="dot"><div></div></div>
-<img id="graphic" alt="Brampton Library Writers Group"  style="" title="Brampton Library Writers" src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdpP7s87He0oOH0L-3akbsRQcO08lnrNfjEdXpW5FDprXZBLjAduZmpOa6zXpsEy3Ep9rs5xIS3iApiOXWX2YZDTt-7-8b2Qn-WUqFHnkYABNfOLMzoUb63zPOJtSaQBKouQpQ4OQ?key=3Tb2PfY0LH3CAJXzyO8iQa35"/>
+<img id="graphic" alt="Brampton Library Writers Group" title="Brampton Library Writers" src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdpP7s87He0oOH0L-3akbsRQcO08lnrNfjEdXpW5FDprXZBLjAduZmpOa6zXpsEy3Ep9rs5xIS3iApiOXWX2YZDTt-7-8b2Qn-WUqFHnkYABNfOLMzoUb63zPOJtSaQBKouQpQ4OQ?key=3Tb2PfY0LH3CAJXzyO8iQa35"/>
 
 <div class="center">
 <p>BRAMPTON LIBRARY<br/>
@@ -95,13 +98,13 @@ in the Program Room at <b>Four Corners</b></p>
 
 	function meetingdate(){
 		function meeting(mt){
-			let first = new Date(today.getFullYear(), today.getMonth() + mt, 1);
+			let first = new Date(today.getFullYear(), today.getMonth() + mt, 1); 
 			let firstday = first.getDay();
 			let m = firstday <= 3 ? 4 - firstday + 7 : 4 - firstday + 14;
 			return new Date(first.getFullYear(), first.getMonth(), m, 16, 0, 0)
 		}
 		let xmtd = meeting(0);
-		return today < xmtd ? xmtd : meeting(1);
+		return today <= xmtd ? xmtd : meeting(1);
 	}
 
 	let mtd = meetingdate();
