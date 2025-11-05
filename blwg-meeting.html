@@ -137,8 +137,12 @@ has some really good gems and is a fun read. The book is in our Library.
 	});
 	*/
 
+/***********************************************************
+FOR TRANSFERING HEADER SYLE SHEET TO INLINE STYLES FOR EMAIL
+***********************************************************/
+	
+/*
 var sheets = document.styleSheets;
-
 function css(el) {
     for (let i in sheets) {
         let rules = sheets[i].rules || sheets[i].cssRules;
@@ -150,26 +154,29 @@ function css(el) {
         }
     }
 }
-
 function transferAll() {
     [...document.getElementsByTagName("*")].forEach(e => {css(e)});
 }
-
 function clearAll(){
 	[...document.getElementsByTagName("*")].forEach(e => {
 		e.removeAttribute("id");
 		e.removeAttribute("class");
 	});
 }
-
 transferAll();
 clearAll();
 document.querySelector("style").remove();
-
+*/
+	
+/***********************
+END OF TRANSFERRING CODE 
+************************/
+	
 //]]>
 </script>
 
 </html>
+
 
 
 
